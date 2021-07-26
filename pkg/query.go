@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	// "fmt"
 	"math"
 	"strconv"
 	"time"
@@ -77,9 +77,11 @@ func (query *AwsAthenaQuery) getQueryResults(ctx context.Context, pluginContext 
 		if err != nil {
 			return nil, err
 		}
-		if workgroup.WorkGroup.Configuration.BytesScannedCutoffPerQuery == nil {
-			return nil, fmt.Errorf("should set scan data limit")
-		}
+		// if workgroup.WorkGroup.Configuration.BytesScannedCutoffPerQuery == nil {
+		// 	return nil, fmt.Errorf("should set scan data limit")
+		// }
+
+		backend.Logger.Warn("Workgroup configuration", workgroup.WorkGroup.Configuration)
 
 		queryExecutionID, err := query.startQueryExecution(ctx)
 		if err != nil {
